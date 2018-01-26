@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <!-- <script type="text/javascript" src="video.js"></script> -->
+    <link rel="stylesheet" href="video-js.css">
+    <!-- <link rel="stylesheet" href="video-js.min.css"> -->
+
+</head>
+<body>
+    <video id="example_video_1" class="video-js vjs-default-skin" width="640px" height="267px"
+    controls preload="none" poster='https://video-js.zencoder.com/oceans-clip.jpg' data-setup=' {"playbackRates": [1, 1.5, 2] }'>
+    <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
+    <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
+    <!-- <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track> -->
+    <!-- Tracks need an ending tag thanks to IE9 -->
+    <!-- <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track> -->
+    <!-- Tracks need an ending tag thanks to IE9 -->
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="video.dev.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var widthhh = $(".vjs-volume-bar.vjs-slider").attr("aria-valuetext");
+        $(".vjs-volume-ll").text(widthhh);
+        var a =document.getElementById("vjs-volume-ll");
+        a.onclick = function(){
+            // updateARIAAttributes();
+            // var cc  = new vjs.VolumeBar();
+
+        }
+// var handle = $("#vjs-volume-handle");
+// var handle = document.getElementById("vjs-control");
+// handle.onclick = function(){
+//   console.log(handle)
+// }
+// handle.onclick = function(e){
+//   var obj = e.srcElement || e.target;
+//   console.log(obj)
+//   switch(obj.className){
+//       case 'vjs-volume-control vjs-control':
+//           console.log(0);
+//           break;
+//       case 'vjs-volume-bar vjs-slider':
+//           console.log(1);
+//           break;
+//       case 'vjs-volume-level':
+//           console.log(2);
+//           break;
+//       case 'vjs-volume-handle vjs-slider-handle':
+//           console.log(3);
+//           break;
+//   }
+// }
+// console.log(handle)
+})
+
+</script>
+
+
+</body>
+</html>

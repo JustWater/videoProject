@@ -1,0 +1,65 @@
+/*置顶*/
+.toTop{
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	border-radius: 50%;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	background: url(../image/toTop.png) no-repeat 16px 0px;
+	background-color: #B8B3B3;
+	transition: background 0.2s;
+	-moz-transition:background 0.2s;
+	-webkit-transition:background 0.2s;
+	-o-transition:background 0.2s;
+}
+.toTop:hover{
+	background-color: #2E88CE;
+	background-position-x:-48px;
+}
+/*提示框*/
+.mask{
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	background: rgba(186,186,186,0.5);
+}
+.mask .maskContent {
+	position: fixed;
+	width: 174px;
+	border-radius: 5px;
+	background-color: #fff;
+	left: 50%;
+	margin-left: -97px;
+	top: 40%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	text-align: center;
+	padding: 0 10px 20px;
+}
+.mask .maskContent i {
+	display: block;
+	width: 52px;
+	height: 52px;
+	margin: 20px auto 10px;
+}
+
+.mask .maskContent .icon1 {
+	background-image: url("icon_22.png");
+}
+
+.mask .maskContent .icon2 {
+	background-image: url("icon_20.png");
+}
+
+.mask .maskContent .icon3 {
+	background-image: url("icon_21.png");
+}
+
+.mask .maskContent span {
+	font-size: 16px;
+	color: #34495e;
+	line-height:20px;
+}
