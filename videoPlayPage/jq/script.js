@@ -6,6 +6,7 @@ $(function(){
 			}
 		})
 	});
+	//统计字数
 	$(document).on('click','.commentInput',function(e){
 		e.stopPropagation();
 		if($(this).val()==""){
@@ -14,79 +15,98 @@ $(function(){
 		$(document).on('input propertychange','.commentInput',function(){
 			var numChange = $(this).parent().find(".numChange");
 			var inputText = $(this).val().length;
-			numChange.text(inputText+" ");
+			if (inputText>140) {
+				$(this).val($(this).val().substring(0,140));
+				showMask("warning","最大长度为140字");
+			}else{
+				numChange.text(inputText+" ");
+			}
 		})
 	})
 	// 删除显隐
 	commentPerHover();
-	//点击评论 
-	$(document).on('click',".commentBtn",function(){
-		var commentArea = $(this).parent();
-		var commentInput = commentArea.find(".commentInput");
-		if(commentInput.val()!=""){
-			var userImg = commentArea.find(".userImg");
-			var userName = commentArea.find(".userName");
-			var commentList = commentArea.next();
-			var time = getTime()
-			var str =   '<div class="commentPer">'+
-			'<img src="'+userImg.attr("src")+'" class="userImg userComment">'+
-			'<div class="userMes">'+
-			'<div class="userBlock">'+
-			'<div class="userAbout">'+
-			'<span class="userName">'+userName.text()+'：</span>'+
-			'<i>'+commentInput.val()+'</i>'+
-			'</div>'+
-			'<div class="operateDiv">'+
-			'<span class="writeTime">'+time+'</span>'+
-			'<div class="operate">'+
-			'<a href="javascript:;" class="del delS">删除</a>'+
-			'<a href="javascript:;" class="reply">回复</a>'+
-			'<a href="javascript:;" class="praise">11</a>'+
-			'</div>'+
-			'</div>'+
-			'</div>'+
-			'<div class="replyList">'+
-			'</div>'+
-			'</div>'+
-			'</div>';
-			commentList.append(str);
-			commentPerHover();
-			commentInput.val("");
-		}
-	});
 
-	$(document).on('click','.commentPer',function(e){
-		var obj = e.target || e.srcElement;
-		switch(obj.className){
-			case 'del delS':
-				var parent = $(obj).parents(".commentPer");
-				delChild(parent);
-				break;
-			case 'del delS':
-				var parent = $(obj).parents(".commentPer");
-				delChild(parent);
-				break;
-			case 'del delL':
-				var parent = $(obj).parents(".replyDiv");
-				delChild(parent);
-				break;
-			case 'reply':
-				var parent = $(obj).parent().parent().parent();
-				createDom(parent);
-				break;
-			case 'cBtn replyBtn':
-				createReply(obj);
-				break;
-			case 'praise':
-				praise(obj);
-				break;
-			case 'praise praiseCheck':
-				praise(obj);
-				break;
-		}
-	})
+	//判断是否登录
+	if ($(".userSelf").find(".userName").text()=="") {
+		$(document).on('click','.commentBtn',function(){
+			showMask("warning","请先登录");
+		})
+		$(document).on('click','.del',function(){
+			showMask("warning","请先登录");
+		})
+		$(document).on('click','.reply',function(){
+			showMask("warning","请先登录");
+		})
+		$(document).on('click','.praise',function(){
+			showMask("warning","请先登录");
+		})
+	}else{
+		$(document).on('click',".commentBtn",function(){
+			var commentArea = $(this).parent();
+			var commentInput = commentArea.find(".commentInput");
+			if(commentInput.val()!=""){
+				var userImg = commentArea.find(".userImg");
+				var userName = commentArea.find(".userName");
+				var commentList = commentArea.next();
+				var time = getTime()
+				var str =   '<div class="commentPer">'+
+				'<img src="'+userImg.attr("src")+'" class="userImg userComment">'+
+				'<div class="userMes">'+
+				'<div class="userBlock">'+
+				'<div class="userAbout">'+
+				'<span class="userName">'+userName.text()+'：</span>'+
+				'<i>'+commentInput.val()+'</i>'+
+				'</div>'+
+				'<div class="operateDiv">'+
+				'<span class="writeTime">'+time+'</span>'+
+				'<div class="operate">'+
+				'<a href="javascript:;" class="del delS">删除</a>'+
+				'<a href="javascript:;" class="reply">回复</a>'+
+				'<a href="javascript:;" class="praise">11</a>'+
+				'</div>'+
+				'</div>'+
+				'</div>'+
+				'<div class="replyList">'+
+				'</div>'+
+				'</div>'+
+				'</div>';
+				commentList.append(str);
+				commentPerHover();
+				commentInput.val("");
+			}
+		});
 
-
+		$(document).on('click','.commentPer',function(e){
+			var obj = e.target || e.srcElement;
+			switch(obj.className){
+				case 'del delS':
+					var parent = $(obj).parents(".commentPer");
+					delChild(parent);
+					break;
+				case 'del delS':
+					var parent = $(obj).parents(".commentPer");
+					delChild(parent);
+					break;
+				case 'del delL':
+					var parent = $(obj).parents(".replyDiv");
+					delChild(parent);
+					break;
+				case 'reply':
+					var parent = $(obj).parent().parent().parent();
+					createDom(parent);
+					break;
+				case 'cBtn replyBtn':
+					createReply(obj);
+					break;
+				case 'praise':
+					praise(obj);
+					break;
+				case 'praise praiseCheck':
+					praise(obj);
+					break;
+			}
+		})
+	}
 });
 
 //删除节点

@@ -1,54 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>旋转比例模拟</title>
-    <style type="text/css">
-    .content {
-        position: absolute;
-        width: 400px;
-        height: 300px;
-        -webkit-perspective: 400px;
-        perspective: 400px;
-        left: 100px;
-        top: 100px;
-    }
-    .wrapper {
-        position: absolute;
-        width: 320px;
-        height: 240px;
-        transform: rotateY(-30deg) rotateX(0deg);
-        border: solid 2px #000;
-    }
-    .wrapper.rotate{
-        transform: rotateY(-30deg) rotateX(50deg);
-    }
-    .wrapper:after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 400px;
-        left: -40px;
-        top: 120px;
-        height: 2px;
-        background: black;
-    }
-    .wrapper img{
-        width: 100%;
-        height: 100%;
-    }
-</style>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
 <body>
+    <button id="aa">aa</button>
+    <script type="text/javascript" src="jq/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        var aa = $("#aa");
+        aa.on('click',function(){
+            var url = "http://zmhwater.vicp.io/videousers/1";
+            var data1 = '{"accountnumber":"162","password":"123"}';
+            $.ajax({
+                url:url,
+                type:"POST",
+                data:data1,
+                dataType:"json",
+                contentType:"application/json;charset=UTF-8",
+                success:function(result){
+                    alert(1)
+                }
+            })
 
-    <div class="content">
-        <div class="wrapper">
-            <img src="http://test.liuxianan.com/sample.jpg"/>
-        </div>
-        <div class="wrapper rotate">
-            <img src="http://test.liuxianan.com/sample.jpg"/>
-        </div>
-    </div>
+        })
+</script>
 </body>
 </html>

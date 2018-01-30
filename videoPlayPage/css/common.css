@@ -25,7 +25,7 @@
 	top: 0;
 	left: 0;
 	z-index: 10000;
-	background: rgba(186,186,186,0.5);
+	background: rgba(186,186,186,0.3);
 }
 .mask .maskContent {
 	position: fixed;
@@ -47,19 +47,160 @@
 }
 
 .mask .maskContent .icon1 {
-	background-image: url("icon_22.png");
+	background-image: url("../image/icon_22.png");
 }
 
 .mask .maskContent .icon2 {
-	background-image: url("icon_20.png");
+	background-image: url("../image/icon_20.png");
 }
 
 .mask .maskContent .icon3 {
-	background-image: url("icon_21.png");
+	background-image: url("../image/icon_21.png");
 }
 
 .mask .maskContent span {
 	font-size: 16px;
 	color: #34495e;
 	line-height:20px;
+}
+
+/*登录注册*/
+/*遮罩层*/
+.maskDiv{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #000;
+	opacity: 0.4;
+	z-index: 10;
+	display: none;
+}
+
+#loginMaskDiv{
+	width: 400px;
+	height: 260px;
+	position: fixed;
+	background: #fff;
+	z-index: 15;
+	border-radius: 10px;
+}
+.userMaskDiv{
+	position: relative;
+}
+#loginMaskDiv h3, #registerMaskDiv h3{
+	padding: 10px;
+	margin-bottom: 20px;
+}
+#loginMaskDiv b, #registerMaskDiv b{
+	background: url(../image/boxy_btn.png) no-repeat;
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+	position: absolute;
+	right: -10px;
+	top:-10px;
+	cursor: pointer;
+}
+#registerMaskDiv{
+	width: 400px;
+	height: 300px;
+	position: fixed;
+	background: #fff;
+	box-shadow: 0px 1px 1px #888888;
+	z-index: 15;
+	border-radius: 10px;
+}
+#logRegDiv form .rowDiv{
+	width: 400px;
+	height: 40px;
+	line-height: 40px;
+	margin: 10px 0;
+	position: relative;
+}
+.spanNormal{
+	background: url(../image/blank.png) no-repeat;
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	position: absolute;
+	right: 27px;
+	top: 11px;
+}
+.ok{
+	background: url(../image/ok.png) no-repeat;
+}
+#logRegDiv form .rowDiv .userSetting{
+	float: left;
+}
+#logRegDiv form .rowDiv .rightInput{
+	padding: 5px;
+	border-radius: 10px;
+	border: 0;
+	border: 1px solid #8C9CE4;
+	width: 200px;
+}
+.chooseSave{
+	margin-left: 40%;
+}
+#logRegDiv form .userSetting{
+	width: 130px;
+	text-align: right;
+	font-size: 16px;
+}
+
+.userBtn{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	background: #8C9CE4;
+	border: 0;
+	border-radius: 15px;
+	font-size: 16px;
+	margin-left: 150px;
+}
+.checkBtn{
+	margin-top: 5px;
+}
+.tipDiv{
+	width: 150px;
+	height: 30px;
+	margin: 0 auto;
+	padding-left: 40px;
+	background: url(../image/blank.png) no-repeat; 
+}
+.tipDivWrong{
+	background: url(../image/unok.png) no-repeat; 
+}
+.tipDivTrue{
+	background: url(../image/ok.png) no-repeat;
+}
+
+/*分页*/
+.paging{
+	position: absolute;
+	left: 50%;
+	bottom: 30px;
+}
+.paging li{
+	float: left;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 0 5px;
+}
+.paging li.on{
+	background: #CBDBF3;
+}
+.paging li#turnTo{
+	background: #B4BFE4;
+	margin-left: 5px;
+	border-radius: 5px;
+}
+.paging li#turnTo:hover{
+	background: #8A99F2
 }

@@ -31,23 +31,47 @@
             </video>
             <div class="recommendDiv">
                 <h2>相关视频推荐</h2>
-                <div class="prev"><img src="image/prev.png"/></div>
+                <div class="prev"></div>
                 <ul class="commendContent">
                     <li><a href="javascript:void(0);">asdsd</a></li>
                     <li><a href="javascript:void(0);">asdsd</a></li>
                     <li><a href="javascript:void(0);">asdsd</a></li>
                 </ul>
-                <div><img src=""/></div>
+                <div class="next"></div>
             </div>
         </div>
     </div>
     <div class="commentHotPlay">
         <div class="commentHotPlayDiv">
             <div class="commentDiv">
+                <div class="paging" id="paging">
+                    <ul>
+                        <li id="pageFirst">首页</li>
+                        <li id="pagePrev" style="display: none;">上一页</li>
+                        <li>
+                            <ul class="putPageNum">
+                                <li index ="1" class="pageNum on">1</li>
+                            </ul>
+                        </li>
+                        <li id="pageNext">下一页</li>
+                        <li id="pageLast">尾页</li>
+                        <li>
+                            <select id="sel">
+                                <option selected="selected" value="1" class="chooseOption">1</option>
+                            </select>
+                        </li>
+                        <li id="turnTo">跳转</li>
+                    </ul>
+                </div>
                 <div class="commentArea">
                     <div class="userSelf">
                         <img src="image/userLogo/user1.png" class="userImg">
                         <span class="userName self">jasda</span>
+                            <!-- <div>
+                                <div class="loginDiv"><span class="login">登录</span></div>
+                                <div class="registerDiv"><span class="register">注册</span></div>
+                            </div> -->
+
                     </div>
                     <textarea class="commentInput commentSelf" placeholder="请输入..."></textarea>
                     <a href="javascript:;" class="commentBtn cBtn">评论</a>
@@ -94,10 +118,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
-                
             </div>
             <div class="hotPlayDiv">
                 <h2>热门搜索</h2>
@@ -115,15 +138,16 @@
             </div>
         </div>
     </div>
-        
-    
+    <div id="maskDiv" class="maskDiv"></div>
+    <div id="logRegDiv"></div>
     <script type="text/javascript">
         $(function(){
+            //音量的初始化
             var widthhh = $(".vjs-volume-bar.vjs-slider").attr("aria-valuetext");
             $(".vjs-volume-ll").text(widthhh);
+            //回复的内容框
             var replyContent = $(".replyContent");
             var replyPerson = $(".replyPerson");
-            console.log(replyContent.css("height"));
             var userPersonHeight = (parseInt(replyContent.css("height"))+12)+'px';
             replyPerson.css({"height":userPersonHeight,"line-height":userPersonHeight})
         })
